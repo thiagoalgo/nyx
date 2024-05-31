@@ -1,0 +1,12 @@
+{
+  "name": "Header Footer",
+  "id": "https://github.com/thiagoalgo/nyx/tree/main/plugins/header-footer",
+  "author": "Thiago Alves Goulart <thiagoalgo@gmail.com>",
+  "thumbnail": "thumbnail.jpg",
+  "active": true,
+  "index": 1,
+  "routes": {
+    "on": ["all"],
+    "off": []
+  }
+}
