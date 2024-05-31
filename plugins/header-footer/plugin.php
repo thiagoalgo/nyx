@@ -1,6 +1,7 @@
+<img src="<?= plugin_http_dir() . 'images/image.png'?>" alt="" style="max-width: 200px">
 <?php
 add_action('controller', function ($data) {
-    dump($_POST);
+    // dump($_POST);
 });
 
 add_action('before_view', function ($data) {

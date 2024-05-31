@@ -37,6 +37,31 @@ function get_plugin_folders(): array
     return $plugin_folders;
 }
 
+function plugin_dir(): string {
+    $file = debug_backtrace()[0]['file'];
+    return get_plugin_dir($file);
+}
+
+function plugin_http_dir(): string {
+    $file = debug_backtrace()[0]['file'];
+    $path = get_plugin_dir($file);
+    $path = str_replace(DS, '/', $path);
+    return ROOT . DS . $path;
+}
+
+function get_plugin_dir(string $filepath): string {
+    $path = '';
+
+    $basename = basename($filepath);
+    $path = str_replace($basename, '', $filepath);
+    if (str_contains($path, DS . 'plugins' . DS)) {
+        $parts = explode(DS . 'plugins' . DS, $path);
+        $path = 'plugins' . DS .$parts[1];
+    }
+
+    return $path;
+}
+
 function load_plugins($plugin_folders): bool
 {
     global $APP;
@@ -138,7 +163,7 @@ function redirect(string $url): void
 function dump(): void
 {
 
-    echo '<pre style="margin: 0"><div style="background-color: steelblue; padding: 10px 10px; margin-top: 1px; color: white">';
+    echo '<pre style="margin: 0"><div style="background-color: steelblue; padding: 10px 10px; margin: 1px 0; color: white">';
     foreach (func_get_args() as $arg) {
         print_r($arg);
     }
